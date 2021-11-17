@@ -10,6 +10,7 @@ import styles from './Home.style'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { connect, useDispatch } from 'react-redux'
 import { fetchDataUser } from '../../stores/actions/user.action'
+import { ToggleSwitch } from '../../components/ToggleSwitch/index'
 
 const Home = ({ navigation, user }) => {
   const dispatch = useDispatch()
@@ -49,7 +50,14 @@ const Home = ({ navigation, user }) => {
             <ListUser />
           </View>
         </View>
+        <View style={{ alignItems: 'center', marginBottom: 50 }}>
+          <ToggleSwitch duration={100} 
+          // onSwitch={e => alert(e)} 
+          />
+        </View>
       </SafeAreaView>
+
+      
     </>
   )
 }
