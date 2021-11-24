@@ -13,11 +13,11 @@ import {
 // const images = new Array(6).fill('http://i.imgur.com/Vv4bmwR.jpg');
 
 const images = [
-  require('../../assets/images/1.jpg'),
+  require('../../assets/images/5.jpg'),
   require('../../assets/images/2.jpg'),
   require('../../assets/images/3.jpg'),
   require('../../assets/images/4.jpg'),
-  require('../../assets/images/5.jpg')
+  require('../../assets/images/1.jpg')
 ]
 
 export const Carousel = ({ navigation }) => {

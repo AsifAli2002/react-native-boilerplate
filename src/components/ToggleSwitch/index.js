@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {
+  View,
   StyleSheet,
   Pressable,
   Animated,
@@ -10,6 +11,7 @@ import { Images } from '../../constants/images'
 import { Dimensions } from 'react-native'
 const { width, height } = Dimensions.get('window')
 import LinearGradient from 'react-native-linear-gradient'
+import PressableButton from '../Pressable/Pressable'
 
 export const ToggleSwitch = ({
   navigation,
@@ -44,33 +46,38 @@ export const ToggleSwitch = ({
   const startAnimation = toValue => {
     Animated.timing(animatedValue, {
       toValue,
-      duration:duration,
+      duration: duration,
       easing: Easing.linear,
       useNativeDriver: false
     }).start()
   }
 
   return (
-    <LinearGradient
-      colors={!isOnToggle ? ['#000', '#E0E5F2'] : ['#E0E5F2', '#680000']}
-      start={{ x: 1, y: 0 }}
-      end={{ x: 0, y: 1 }}
-      style={{ borderRadius: 125 }}>
-      <TouchableOpacity
-        style={[styles.sliderContainer, containerStyle]}
-        activeOpacity={0.95}
-        onPress={() => {
-          updatedSwitchData()
-        }}>
-        <Animated.View style={{ left }}>
-          <LinearGradient
-            colors={!isOnToggle ? ['#E0E5F2', '#000'] : ['pink', '#680000']}
-            start={{ x: 1, y: 0 }}
-            end={{ x: 0, y: 1 }}
-            style={[styles.sliderCircle, circleStyle]}></LinearGradient>
-        </Animated.View>
-      </TouchableOpacity>
-    </LinearGradient>
+    <View style={{ width: 44 }}>
+      <LinearGradient
+        colors={!isOnToggle ? ['#000', '#E0E5F2'] : ['#E0E5F2', '#BE0000']}
+        start={{ x: 1, y: 0 }}
+        end={{ x: 0, y: 1 }}
+        style={{ borderRadius: 125 }}>
+        <TouchableOpacity
+          // onTouchEnd={() => alert(e)}
+          style={[styles.sliderContainer, containerStyle]}
+          activeOpacity={0.95}
+          onPress={() => {
+            updatedSwitchData()
+          }}>
+          <Animated.View style={{ left }}>
+            <LinearGradient
+              colors={
+                !isOnToggle ? ['#E0E5F2', '#000'] : ['#E0E5F2', '#BE0000']
+              }
+              start={{ x: 1, y: 0 }}
+              end={{ x: 0, y: 1 }}
+              style={[styles.sliderCircle, circleStyle]}></LinearGradient>
+          </Animated.View>
+        </TouchableOpacity>
+      </LinearGradient>
+    </View>
   )
 }
 

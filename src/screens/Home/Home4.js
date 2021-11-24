@@ -24,25 +24,21 @@ import LinearGradient from 'react-native-linear-gradient'
 import CategoryComp from '../../components/CategoryComponent/index'
 
 
-
-
-
-const Home1 = ({ navigation, user }) => {
+const Home4 = ({ navigation, user }) => {
   return (
     <>
       <StatusBar barStyle="dark-content" backgroundColor={'#f9f9f9'} />
       <SafeAreaView style={styles.mainContainer}>
       <View style={{justifyContent:"center", alignItems:"center"}}>
-          <Text style={{fontSize:20}}>Home - 1 </Text>
+          <Text style={{fontSize:20}}>Home - 4 </Text>
         </View>
-      <PressableButton title='Next' onPress={()=> navigation.navigate('Home2')}/>
+      <PressableButton title='Next' onPress={()=> navigation.navigate('Home5')}/>
     <View style={styles.View}>
-
-      
-
-
-     
-
+ 
+       
+    <View style={{ height:height, backgroundColor:"orange" }}>
+            <CustomScrollview/>
+          </View>
 
 
 
@@ -65,10 +61,9 @@ const styles = StyleSheet.create({
   },
 View:{
     flex: 1,
-    backgroundColor:"#fff"
-      
+    backgroundColor:"#fff"       
   },
 
 })
 
-export default connect(mapStateToProps, null)(Home1)
+export default connect(mapStateToProps, null)(Home4)
