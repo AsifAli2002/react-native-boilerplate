@@ -21,7 +21,8 @@ import {CustomScrollView} from '../../components/CustomScrollView/CustomScrollVi
 import { fetchDataUser } from '../../stores/actions/user.action'
 import { ToggleSwitch } from '../../components/ToggleSwitch/index'
 import LinearGradient from 'react-native-linear-gradient'
-import CategoryComp from '../../components/CategoryComponent/index'
+import LoanCard from '../../components/LoanCard/index'
+import Radio from '../../components/CategoryComponent/radio'
 
 
 
@@ -38,7 +39,9 @@ const Home1 = ({ navigation, user }) => {
       <PressableButton title='Next' onPress={()=> navigation.navigate('Home2')}/>
     <View style={styles.View}>
 
-      
+      <LoanCard/>
+
+      <Radio/>
 
 
      
@@ -65,8 +68,10 @@ const styles = StyleSheet.create({
   },
 View:{
     flex: 1,
-    backgroundColor:"#fff"
-      
+    backgroundColor:"#fff",
+    justifyContent:"center", 
+    alignItems:"center",
+         
   },
 
 })

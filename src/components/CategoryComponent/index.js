@@ -7,7 +7,8 @@ import { Images } from '../../constants/images'
 export default function CategoryComp({ 
   onPress = () => {}, 
   data = [],
-  targetKey = "1" 
+  targetKey = "1",
+  ImageStyle = {},
 }) {
 
  
@@ -56,8 +57,8 @@ export default function CategoryComp({
                 }
               ]}
               activeOpacity={1}>
-              <View style={styles.ImageView}>
-                <Image source={item.Image} />
+              <View style={[styles.ImageView, ImageStyle]}>
+                <Image source={item.Image} style={{height:"100%", width:"100%", borderRadius:5}} />
               </View>
               <View style={{ flex: 1, marginLeft: 15 }}>
                 <View style={{ alignItems: 'flex-end', marginTop: 4 }}>
