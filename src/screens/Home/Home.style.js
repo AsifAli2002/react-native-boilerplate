@@ -17,10 +17,20 @@ export default StyleSheet.create({
   buttonStyle: {
     backgroundColor: '#EEE',
     paddingHorizontal: 40,
-    paddingVertical: 30,
+    paddingVertical: 20,
     borderWidth: 0.5,
     borderColor: '#F0F0F0',
-    borderRadius: 10
+    borderRadius: 10,
+
   },
-  text: { fontSize: 18, color: '#808080', fontWeight: 'bold' }
+  text: { fontSize: 18, color: '#808080', fontWeight: 'bold' },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  header: {
+    fontSize: 16,
+    marginVertical: 10
+  }
 })

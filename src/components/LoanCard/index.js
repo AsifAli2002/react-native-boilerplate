@@ -10,44 +10,109 @@ import {
 import LinearGradient from 'react-native-linear-gradient'
 import { Icon } from 'react-native-vector-icons/Ionicons'
 import { Images } from '../../constants/images'
+import PressableButton from '../Pressable/Pressable'
 
 export default function LoanCard({
+  LoanAmount = '$ 7,500.00',
+  Frequency = 'Monthly',
+  InstallmentAmount = '$5000',
   onPress = () => {},
   data = [],
   targetKey = '1',
   ImageStyle = {}
 }) {
+  const [value, setValue] = useState(null)
   return (
     <>
-    <View style={styles.rbWrapper}>
-      <TouchableOpacity activeOpacity={.9} style={styles.mainContainer}>
-        <View style={styles.loanView}>
-          <View style={styles.loanTextView}>
-            <Text style={{ fontSize: 12, fontFamily:'Rubik-Medium', color:"#00000050", }}>Loan Amount</Text>
-            <Text style={{ fontSize: 12, fontFamily:'Rubik-Medium',color:"#00000050"}}>Frequency</Text>
+      <View style={styles.rbWrapper}>
+        <TouchableOpacity
+          // onPress={() => setValue(!value)}
+          activeOpacity={.95}
+          style={[
+            styles.mainContainer,
+            { borderColor: value ? '#0c36ac' : '#fff' }
+          ]}>
+          <View style={styles.loanView}>
+            <View style={styles.loanTextView}>
+              <Text
+                style={{
+                  fontSize: 11,
+                  fontFamily: 'Rubik-Medium',
+                  color: '#00000050'
+                }}>
+                Loan Amount
+              </Text>
+              <Text
+                style={{
+                  fontSize: 11,
+                  fontFamily: 'Rubik-Medium',
+                  color: '#00000050'
+                }}>
+                Frequency
+              </Text>
+            </View>
+
+            <View style={styles.loanTextView}>
+              <Text
+                style={{
+                  fontSize: 17,
+                  color: '#0c36ac',
+                  fontFamily: 'Rubik-Bold'
+                }}>
+                {LoanAmount}
+              </Text>
+              <Text
+                style={{
+                  fontSize: 17,
+                  color: '#00000099',
+                  fontFamily: 'Rubik-Bold'
+                }}>
+                {Frequency}
+              </Text>
+            </View>
           </View>
 
-          <View style={styles.loanTextView}>
-            <Text style={{ fontSize: 18, color:"#0c36ac", fontFamily:'Rubik-Bold'}}>$ 7,500.00</Text>
-            <Text style={{ fontSize: 18,color:"#00000099",fontFamily:'Rubik-Bold' }}>Monthly</Text>
-          </View>
-        </View>
+          <View style={styles.borderView} />
 
-        <View style={styles.borderView} />
-
-        <View style={styles.installmentView}>
-          <Text style={{ fontSize: 14, fontFamily:'Rubik-Medium',color:"#00000050" }}>
-            Installment{' '}
-            <Text style={{ fontSize: 16, fontFamily:'Rubik-Bold',color:"#00000099" }}>$5000</Text>
-          </Text>
-
-          <TouchableOpacity style={styles.buttonStyle} activeOpacity={0.8}>
-            <Text style={{ fontSize: 10, fontFamily:'Rubik-Medium',color:"#0c36ac80" }}>
-              Cash Advance
+          <View style={styles.installmentView}>
+            <Text
+              style={{
+                fontSize: 12,
+                fontFamily: 'Rubik-Medium',
+                color: '#00000050'
+              }}>
+              Installment{''}{' '}
+              <Text
+                style={{
+                  fontSize: 15,
+                  fontFamily: 'Rubik-Bold',
+                  color: '#00000099'
+                }}>
+                {InstallmentAmount}
+              </Text>
             </Text>
-          </TouchableOpacity>
-        </View>
-      </TouchableOpacity>
+
+            <PressableButton 
+            onPress={() => setValue(!value)}
+             title="Cash Advance"
+             buttonStyle={{height:18, width:90, backgroundColor:"#e8ebf5"}}
+             textStyle={{ fontSize: 9,fontFamily: 'Rubik-Medium',color: '#0c36ac80'}} 
+              rippleRadius={50}
+              borderRadius={15}
+              rippleColor="#0c36ac30"
+          
+            />
+              {/* <Text
+                style={{
+                  fontSize: 9,
+                  fontFamily: 'Rubik-Medium',
+                  color: '#0c36ac80'
+                }}>
+                Cash Advance
+              </Text> */}
+            {/* </PressableButton> */}
+          </View>
+        </TouchableOpacity>
       </View>
     </>
   )
@@ -55,30 +120,31 @@ export default function LoanCard({
 
 const styles = StyleSheet.create({
   rbWrapper: {
-    marginBottom: 15,
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    backgroundColor: '#0c36ac',
-    borderRadius: 15,
-  },
-
-  mainContainer: {
     height: 130,
     width: '90%',
     alignSelf: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
     borderRadius: 15,
-    borderWidth:1,
-    borderColor:"#0c36ac",
+    backgroundColor: '#0c36ac20',
+    marginBottom: 15
+  },
+  mainContainer: {
+    height: 130,
+    width: '100%',
+    alignSelf: 'center',
+    borderWidth: 1,
+    borderRadius: 15,
     backgroundColor: '#fff',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 4
+      height: 3
     },
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.27,
     shadowRadius: 4.65,
-    elevation: 8
+    elevation: 6
   },
 
   loanView: {
@@ -96,7 +162,7 @@ const styles = StyleSheet.create({
     width: '94%',
     height: 1,
     alignSelf: 'center',
-    backgroundColor: '#00000020'
+    backgroundColor: '#00000010'
   },
 
   installmentView: {
@@ -107,15 +173,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center'
   },
-  buttonStyle: {
-    width: 90,
-    height: 19,
-    backgroundColor: '#e8ebf5',
-    borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-
+  // buttonStyle: {
+  //   // width: 90,
+  //   // height: 15,
+  //   backgroundColor: '#e8ebf5',
+  //   borderRadius: 10,
+  //   alignItems: 'center',
+  //   justifyContent: 'center'
+  // }
 })
 
 // {data.map((item, i) => {

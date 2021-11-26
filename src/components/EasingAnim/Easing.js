@@ -1,32 +1,5 @@
-import React from 'react'
-import {
-  SafeAreaView,
-  View,
-  Text,
-  StatusBar,
-  TouchableOpacity,
-  StyleSheet,
-  ScrollView,
-  Pressable,
-  Easing,
-  Animated,  SectionList,
-} from 'react-native'
-// import styles from './Home.style'
-import Icon from 'react-native-vector-icons/Ionicons'
-import { connect, useDispatch } from 'react-redux'
-
-import { Carousel } from '../../components/Carousel'
-const { width, height } = Dimensions.get('window')
-import { CustomScrollview } from '../../components/CustomScrollView/CustomScrollBar'
-import { Dimensions } from 'react-native'
-import PressableButton from '../../components/Pressable/Pressable'
-import {CustomScrollView} from '../../components/CustomScrollView/CustomScrollView'
-import { fetchDataUser } from '../../stores/actions/user.action'
-import { ToggleSwitch } from '../../components/ToggleSwitch/index'
-import LinearGradient from 'react-native-linear-gradient'
-import LoanCard from '../../components/LoanCard/index'
-import Radio from '../../components/CategoryComponent/radio'
-import {EasingAnim} from '../../components/EasingAnim/Easing';
+import React from "react";
+import { Animated, Easing, SectionList, StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 
 
@@ -79,52 +52,33 @@ const SECTIONS = [
 ];
 
 
+const EasingAnim = () => {
+  let opacity = new Animated.Value(0);
 
-const Home1 = ({ navigation, user }) => {
+  const animate = easing => {
+    opacity.setValue(0);
+    Animated.timing(opacity, {
+      toValue: 1,
+      duration: 1200,
+      easing
+    }).start();
+  };
 
+  const size = opacity.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, 80]
+  });
 
-    let opacity = new Animated.Value(0);
-  
-    const animate = easing => {
-      opacity.setValue(0);
-      Animated.timing(opacity, {
-        toValue: 1,
-        duration: 1200,
-        easing
-      }).start();
-    };
-  
-    const size = opacity.interpolate({
-      inputRange: [0, 1],
-      outputRange: [0, 80]
-    });
-  
-    const animatedStyles = [
-      styles.box,
-      {
-        opacity,
-        width: size,
-        height: size
-      }
-    ];
+  const animatedStyles = [
+    styles.box,
+    {
+      opacity,
+      width: size,
+      height: size
+    }
+  ];
 
-
-  
   return (
-    <>
-      <StatusBar barStyle="dark-content" backgroundColor={'#f9f9f9'} />
-      <SafeAreaView style={styles.mainContainer}>
-      <View style={{justifyContent:"center", alignItems:"center"}}>
-          <Text style={{fontSize:20}}>Home - 1 </Text>
-        </View>
-      <PressableButton title='Next' onPress={()=> navigation.navigate('Home2')}/>
-
-
-
-
-
-    <View style={styles.View}>
-
     <View style={styles.container}>
       {/* <StatusBar hidden={true} /> */}
       <Text style={styles.title}>
@@ -150,39 +104,11 @@ const Home1 = ({ navigation, user }) => {
         )}
       />
     </View>
+  );
+};
 
-
-
-
-     
-
-
-
-
-        </View>
-      </SafeAreaView>
-    </>
-  )
-}
-
-const mapStateToProps = state => {
-  return {
-    user: state.userReducer.users
-  }
-}
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    flex: 1,
-    backgroundColor: '#f5eeb0'
-  },
-View:{
-    flex: 1,
-    backgroundColor:"#fff",
-    justifyContent:"center", 
-    alignItems:"center",
-         
-  },
   container: {
     flex: 1,
     backgroundColor: "#20232a"
@@ -215,7 +141,6 @@ View:{
   listRow: {
     padding: 8
   }
+});
 
-})
-
-export default connect(mapStateToProps, null)(Home1)
+export default EasingAnim;

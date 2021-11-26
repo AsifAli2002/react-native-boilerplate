@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Dimensions } from 'react-native'
+const { width, height } = Dimensions.get('window')
 
 const PressableButton = ({
   title = 'title',
@@ -7,7 +9,6 @@ const PressableButton = ({
   rippleRadius = 200,
   textStyle = {},
   buttonStyle = {},
-  containerStyle = {},
   onPress= () => {}
 }) => {
   const [timesPressed, setTimesPressed] = useState(0)
@@ -20,42 +21,30 @@ const PressableButton = ({
   }
 
   return (
-    <View style={[styles.container, containerStyle]}>
+    <View style={[styles.button, buttonStyle]}>
       <Pressable
-        style={[styles.button, buttonStyle]}
         onPress={onPress}
         android_ripple={{
           color: rippleColor,
           borderless: true,
           radius: rippleRadius
         }}>
-        <Text style={[styles.buttonText, textStyle]}>{title}</Text>
+        <Text style={textStyle}>{title}</Text>
       </Pressable>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
+  button: {  
     overflow:"hidden",
-    alignSelf: 'stretch',
+    alignSelf: 'auto',
+    alignItems:'center',
     justifyContent: 'center',
-    borderRadius: 50,
-    margin: 10
+    borderRadius: 10,
+    backgroundColor:"#edc45320",
+    height:40,
   },
-  button: {
-    width: '100%',
-    backgroundColor: 'cyan',
-    padding: 10,
-    borderRadius: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-
-  },
-  buttonText: {
-    fontSize: 16,
-    color: 'black'
-  }
 })
 
 export default PressableButton

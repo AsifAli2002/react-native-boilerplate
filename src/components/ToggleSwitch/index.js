@@ -24,8 +24,12 @@ export const ToggleSwitch = ({
   const animatedValue = React.useRef(new Animated.Value(isOn ? 1 : 0)).current
 
   const left = animatedValue.interpolate({
-    inputRange: [0, 1],
-    outputRange: [2, 22],
+    inputRange: [0, 1,],
+    outputRange: [2, 22,],
+    // inputRange: [0, 1],
+    // outputRange: [0, 80],
+    // inputRange: [0, 50, 100],
+    // outputRange: [0, 1, 0],
     extrapolate: 'clamp'
   })
 
@@ -55,7 +59,7 @@ export const ToggleSwitch = ({
   return (
     <View style={{ width: 44 }}>
       <LinearGradient
-        colors={!isOnToggle ? ['#000', '#E0E5F2'] : ['#E0E5F2', '#BE0000']}
+        colors={!isOnToggle ? ['orange', '#000'] : ['#000','orange' ]}
         start={{ x: 1, y: 0 }}
         end={{ x: 0, y: 1 }}
         style={{ borderRadius: 125 }}>
@@ -69,7 +73,7 @@ export const ToggleSwitch = ({
           <Animated.View style={{ left }}>
             <LinearGradient
               colors={
-                !isOnToggle ? ['#E0E5F2', '#000'] : ['#E0E5F2', '#BE0000']
+                !isOnToggle ? ['#fff',"blue", '#fff'] : ['#fff',"red", '#fff']
               }
               start={{ x: 1, y: 0 }}
               end={{ x: 0, y: 1 }}
@@ -88,7 +92,8 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
+
   },
   sliderCircle: {
     width: 20,
