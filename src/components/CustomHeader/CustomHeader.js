@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { Dimensions } from 'react-native'
 const { width, height } = Dimensions.get('window')
 
-const PressableButton = ({
+const CustomHeader = ({
   title = 'title',
   rippleColor = '#70707020',
   rippleRadius = 200,

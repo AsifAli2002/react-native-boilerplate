@@ -8,6 +8,7 @@ import {
   Alert
 } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
+import { color } from 'react-native-reanimated'
 import { Icon } from 'react-native-vector-icons/Ionicons'
 import { Images } from '../../constants/images'
 import PressableButton from '../Pressable/Pressable'
@@ -17,20 +18,24 @@ export default function LoanCard({
   Frequency = 'Monthly',
   InstallmentAmount = '$5000',
   onPress = () => {},
-  data = [],
+  LoanData = [],
   targetKey = '1',
   ImageStyle = {}
 }) {
   const [value, setValue] = useState(null)
   return (
     <>
-      <View style={styles.rbWrapper}>
+     
+     
+     {LoanData.map(item => {
+       return(
+        <View key={item.key} style={styles.rbWrapper}>
         <TouchableOpacity
-          // onPress={() => setValue(!value)}
-          activeOpacity={.95}
+          onPress={() => setValue(item.key)}
+          activeOpacity={.96}
           style={[
             styles.mainContainer,
-            { borderColor: value ? '#0c36ac' : '#fff' }
+            { borderColor: value === item.key ? '#0c36ac' : '#fff'}
           ]}>
           <View style={styles.loanView}>
             <View style={styles.loanTextView}>
@@ -59,7 +64,7 @@ export default function LoanCard({
                   color: '#0c36ac',
                   fontFamily: 'Rubik-Bold'
                 }}>
-                {LoanAmount}
+                {item.LoanAmount}
               </Text>
               <Text
                 style={{
@@ -67,7 +72,7 @@ export default function LoanCard({
                   color: '#00000099',
                   fontFamily: 'Rubik-Bold'
                 }}>
-                {Frequency}
+                {item.Frequency}
               </Text>
             </View>
           </View>
@@ -88,18 +93,18 @@ export default function LoanCard({
                   fontFamily: 'Rubik-Bold',
                   color: '#00000099'
                 }}>
-                {InstallmentAmount}
+                {item.Installment}
               </Text>
             </Text>
 
-            <PressableButton 
-            onPress={() => setValue(!value)}
-             title="Cash Advance"
+            <PressableButton             
+            //  onPress={() => setValue(item.key)}
+             title={item.buttonText}
              buttonStyle={{height:18, width:90, backgroundColor:"#e8ebf5"}}
              textStyle={{ fontSize: 9,fontFamily: 'Rubik-Medium',color: '#0c36ac80'}} 
-              rippleRadius={50}
+              rippleRadius={45}
               borderRadius={15}
-              rippleColor="#0c36ac30"
+              rippleColor="#0c36ac20"
           
             />
               {/* <Text
@@ -114,6 +119,12 @@ export default function LoanCard({
           </View>
         </TouchableOpacity>
       </View>
+
+       )
+            })}
+   <Text style={{fontSize: 17, color: '#0c36ac',fontFamily: 'Rubik-Bold'}}> Selected Card: [ {value} ]</Text>
+
+
     </>
   )
 }

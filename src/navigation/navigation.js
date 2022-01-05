@@ -10,6 +10,7 @@ import Home3 from '../screens/Home/Home3'
 import Home4 from '../screens/Home/Home4'
 import Home5 from '../screens/Home/Home5'
 import Home6 from '../screens/Home/Home6'
+import CheckScreen from '../screens/Profile/checkScreen'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 const Stack = createStackNavigator()
@@ -80,6 +81,11 @@ const MainNavigation = () => {
             <Stack.Screen
           name="Home6"
           component={Home6}
+          options={{ headerShown: false }}
+        />
+           <Stack.Screen
+          name="CheckScreen"
+          component={CheckScreen}
           options={{ headerShown: false }}
         />
         {/* add your another screen here using -> Stack.Screen */}

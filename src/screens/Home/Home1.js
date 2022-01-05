@@ -9,11 +9,14 @@ import {
   ScrollView,
   Pressable,
   Easing,
-  Animated,  SectionList,
+SectionList,
+Animated
 } from 'react-native'
 // import styles from './Home.style'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { connect, useDispatch } from 'react-redux'
+// import {Animated} from 'react-native-reanimated'
+
 
 import { Carousel } from '../../components/Carousel'
 const { width, height } = Dimensions.get('window')

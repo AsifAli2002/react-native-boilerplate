@@ -20,7 +20,7 @@ export default function Radio(
         width: '100%'
       }}>
       {data.map(item => {
-        console.log(item)
+        // console.log(item)
         return (
           <View key={item.key} style={styles.rbWrapper}>
             <TouchableOpacity

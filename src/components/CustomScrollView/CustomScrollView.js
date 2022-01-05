@@ -1,5 +1,5 @@
 import { isTemplateElement } from '@babel/types'
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, Children } from 'react'
 import {
   View,
   Text,
@@ -14,7 +14,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 
 export const CustomScrollView = (
   {
-    ContentArea = 'type your content here',
+    children = [],
     indicatorStyle = { },
     ScrollBarStyle = { },
     scrollContainer = { },
@@ -63,7 +63,7 @@ export const CustomScrollView = (
     <View style={[styles.scrollContainer, scrollContainer]}>
       <ScrollView
         nestedScrollEnabled={true}
-        contentContainerStyle={{paddingBottom:50}}
+        // contentContainerStyle={{paddingBottom:50}}
         onContentSizeChange={onContentSizeChange}
         onLayout={onLayout}
         onScroll={Animated.event(
@@ -72,10 +72,9 @@ export const CustomScrollView = (
         )}
         scrollEventThrottle={16}
         showsVerticalScrollIndicator={false}
-        style={styles.petItemListContainer}>
-          <Text>
-            {ContentArea}
-          </Text>
+        style={styles.petItemListContainer}>  
+            {children}
+      
       </ScrollView>
       <View style={[styles.ScrollBarStyle, ScrollBarStyle]}>
         <Animated.View
@@ -107,7 +106,7 @@ const styles = StyleSheet.create({
     width: 6,
   },
  ScrollBarStyle: {
-    backgroundColor: 'orange',
+    backgroundColor: 'transparent',
     height: '100%',
     width: 12,
   },

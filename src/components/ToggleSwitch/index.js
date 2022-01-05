@@ -10,6 +10,7 @@ import {
 import { Images } from '../../constants/images'
 import { Dimensions } from 'react-native'
 const { width, height } = Dimensions.get('window')
+// import {Animated} from 'react-native-reanimated'
 import LinearGradient from 'react-native-linear-gradient'
 import PressableButton from '../Pressable/Pressable'
 
